@@ -6,9 +6,9 @@ import Link from 'next/link'
 export default function LangchainHome() {
   return (
     <>
-      <div className='text-center container py-20'>
+      <div className='text-center container py-12'>
       <h1 className="text-3xl md:text-6xl font-bold  mb-6">
-        WebZim Langchain Demos
+        Langchain Demos
       </h1>
       <div className='flex flex-wrap'>
 

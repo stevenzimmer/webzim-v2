@@ -4,11 +4,6 @@ import { OpenAI } from "langchain/llms/openai";
 import { BufferMemory } from "langchain/memory";
 import { ConversationChain } from "langchain/chains";
 
-/**
- *
- * WARNING: THIS IS THE SOLUTION! Please try coding before viewing this.
- *
- */
 
 let model;
 let memory;
@@ -16,6 +11,10 @@ let chain;
 export async function POST(req: NextRequest) {
     const body = await req.json();
     const { input, firstMsg } = body;
+
+    console.log({firstMsg});
+    console.log({input});
+
 
     if (!input) {
       throw new Error("No input!");
@@ -36,6 +35,6 @@ export async function POST(req: NextRequest) {
       output: response
     }, {
       status: 200
-    })
+    });
 
 }

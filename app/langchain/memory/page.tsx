@@ -2,18 +2,24 @@
 import React, { useState } from "react";
 import PageHeader from "@/components/langchain/PageHeader";
 import PromptBox from "@/components/langchain/PromptBox";
-import Title from "@/components/langchain/Title";
+
 import TwoColumnLayout from "@/components/langchain/TwoColumnLayout";
 import ResultWithSources from "@/components/langchain/ResultWithSources";
 
+
+// export const metadata = {
+//   title: "Langchain Demos | WebZim",
+//   description: "Demos on the latest AI capabilites on the web using Langchain.",
+// };
 
 
 export default function MemoryPage() {
   const [prompt, setPrompt] = useState("");
   const [error, setError] = useState(null);
+  const [retrieving, setRetrieving] = useState(false);
   const [messages, setMessages] = useState([
     {
-      text: "Hi there! What's your name and favourite food?",
+      text: "Hi there! I am a chat bot with an excellent memory. Please start the chat by telling me your name and also your favorite food",
       type: "bot",
     },
   ]);
@@ -25,6 +31,8 @@ export default function MemoryPage() {
 
   const handleSubmitPrompt = async () => {
     console.log("sending ", prompt);
+    setRetrieving(true);
+    setPrompt("");
     try {
       // Update the user message
       setMessages((prevMessages) => [
@@ -44,9 +52,10 @@ export default function MemoryPage() {
         throw new Error(`HTTP Error! Status: ${response.status}`);
       }
 
-      setPrompt("");
+      
       // So we don't reinitialize the chain
       setFirstMsg(false);
+
       const searchRes = await response.json();
       // Add the bot message
       setMessages((prevMessages) => [
@@ -57,22 +66,27 @@ export default function MemoryPage() {
       console.log({ searchRes });
       // Clear any old error messages
       setError("");
+      setRetrieving(false);
     } catch (err) {
       console.error(err);
       setError(err);
+      setRetrieving(false);
     }
   };
 
   return (
     <>
-      <Title headingText={"Memory Demo"} emoji="🧠" />
       <TwoColumnLayout
         leftChildren={
           <>
             <PageHeader
-              heading="I remember everything"
-              boldText="Let's see if it can remember your name and favourite food. This tool will let you ask anything contained in a PDF document. "
-              description="This tool uses Buffer Memory and Conversation Chain.  Head over to Module X to get started!"
+              labelEmoji="🧠"
+              labelText="Memory Demo"
+              heading="Test my memory"
+          
+              description="This chat interface is built with: "
+              tools={["Langchain", "BufferMemory","ConversationChain", "OpenAI API"]}
+
             />
           </>
         }

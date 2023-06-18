@@ -69,7 +69,7 @@ const HamburgerMenu = () => {
         } rounded-3xl px-12 py-4 flex flex-col justify-center gap-x-4 shadow z-20`}
       >
         <p className={`text-center ${pressStart2P.className} mb-4`}>Menu</p>
-        <ul className="flex flex-row gap-4 uppercase">
+        <ul className="flex  gap-4 uppercase">
           {langchainDemos.map((demo) => (
             <li key={demo.path} className="flex flex-col gap-4">
               <Link href={`/langchain/${demo.path}`} >

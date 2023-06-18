@@ -4,8 +4,8 @@ import Navbar from "@/components/langchain/Navbar";
 import { instrumentSans } from "@/styles/fonts";
 
 export const metadata = {
-  title: "Langchain JavaScript",
-  description: "Learn  the latest AI technologies from Shawn Esquivel.",
+  title: "Langchain Demos | WebZim",
+  description: "Demos on the latest AI capabilites on the web using Langchain.",
 };
 
 type Props = {
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Props) {
   return (
    <>
         <Navbar />
-        <main className="flex flex-col pt-20 px-20">{children}</main>
+        <main className="px-12 md:p-20 max-w-6xl mx-auto">{children}</main>
         {/* <Footer /> */}
         </> 
   );

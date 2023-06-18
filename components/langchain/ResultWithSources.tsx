@@ -16,14 +16,14 @@ type MessageItem = {
   isLast: boolean;
 };
 const MessageItem = ({ message, pngFile, isLast }:MessageItem) => {
-  const userImage = "/assets/images/green-square.png";
-  const botImage = `/assets/images/${pngFile}.png`;
+  const userImage = "/assets/images/langchain/green-square.png";
+  const botImage = `/assets/images/langchain/${pngFile}.png`;
   const [showSources, setShowSources] = useState(false);
 
   return (
     <div className={`flex flex-col ${isLast ? "flex-grow" : ""}`}>
-      <div className="flex mb-4">
-        <div className="rounded mr-4 h-10 w-10 relative overflow-hidden">
+      <div className={`flex items-center mb-4 ${message.type === "user" ? "flex-row-reverse" : ""} `}>
+        <div className={`rounded  h-[32px] w-[32px] relative overflow-hidden ${message.type === "user" ? "ml-4" : "mr-4"} `}>
           <Image
             src={message.type === "user" ? userImage : botImage}
             alt={`${message.type}'s profile`}
@@ -35,7 +35,7 @@ const MessageItem = ({ message, pngFile, isLast }:MessageItem) => {
           />
         </div>
         <p
-          className={message.type === "user" ? "user" : "bot"}
+          className={`${message.type === "user" ? "user" : "bot"} m-0`}
           style={{ maxWidth: "90%" }}
         >
           {message.text}
