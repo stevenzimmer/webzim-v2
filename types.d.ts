@@ -12,3 +12,19 @@ type BlogPost = {
   content: ReactElement<any, string | JSXElementConstructor<any>>,
 
 }
+
+
+type Document = {
+  pageContent: string;
+  metadata: Record<string, unknown>;
+};
+type Message = {
+  text: string;
+  type: "user" | "bot";
+  sourceDocuments: Document[];
+};
+type MessageItem = {
+  message: Message;
+  pngFile: string;
+  isLast: boolean;
+};

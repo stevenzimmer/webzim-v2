@@ -16,7 +16,7 @@ import ResultWithSources from "@/components/langchain/ResultWithSources";
 export default function MemoryPage() {
   const [prompt, setPrompt] = useState("");
   const [error, setError] = useState(null);
-  const [retrieving, setRetrieving] = useState(false);
+  const [isRetrieving, setIsRetrieving] = useState(false);
   const [messages, setMessages] = useState([
     {
       text: "Hi there! I am a chat bot with an excellent memory. Please start the chat by telling me your name and also your favorite food",
@@ -31,7 +31,7 @@ export default function MemoryPage() {
 
   const handleSubmitPrompt = async () => {
     console.log("sending ", prompt);
-    setRetrieving(true);
+    setIsRetrieving(true);
     setPrompt("");
     try {
       // Update the user message
@@ -53,7 +53,7 @@ export default function MemoryPage() {
       }
 
       
-      // So we don't reinitialize the chain
+      // To keep current chain
       setFirstMsg(false);
 
       const searchRes = await response.json();
@@ -63,14 +63,14 @@ export default function MemoryPage() {
         { text: searchRes.output.response, type: "bot", sourceDocuments: null },
       ]);
 
-      console.log({ searchRes });
+      // console.log({ searchRes });
       // Clear any old error messages
       setError("");
-      setRetrieving(false);
+      setIsRetrieving(false);
     } catch (err) {
       console.error(err);
       setError(err);
-      setRetrieving(false);
+      setIsRetrieving(false);
     }
   };
 
@@ -83,7 +83,6 @@ export default function MemoryPage() {
               labelEmoji="🧠"
               labelText="Memory Demo"
               heading="Test my memory"
-          
               description="This chat interface is built with: "
               tools={["Langchain", "BufferMemory","ConversationChain", "OpenAI API"]}
 
@@ -92,9 +91,10 @@ export default function MemoryPage() {
         }
         rightChildren={
           <>
-            <ResultWithSources messages={messages} pngFile="brain" />
+            <ResultWithSources messages={messages} pngFile="brain" isRetrieving={isRetrieving} />
             <PromptBox
               prompt={prompt}
+              
               handleSubmit={handleSubmitPrompt}
               error={error}
               handlePromptChange={handlePromptChange}

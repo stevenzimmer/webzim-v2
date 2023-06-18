@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { input, firstMsg } = body;
 
-    console.log({firstMsg});
-    console.log({input});
+    // console.log({firstMsg});
+    // console.log({input});
 
 
     if (!input) {
@@ -21,15 +21,15 @@ export async function POST(req: NextRequest) {
     }
 
     if (firstMsg) {
-      console.log("initializing chain");
+      // console.log("initializing chain");
       model = new OpenAI({ modelName: "gpt-3.5-turbo" });
       memory = new BufferMemory();
-      chain = new ConversationChain({ llm: model, memory: memory });
+      chain = new ConversationChain({ llm: model, memory });
     }
 
-    console.log({ input });
+    // console.log({ input });
     const response = await chain.call({ input });
-    console.log({ response });
+    // console.log({ response });
 
     return NextResponse.json({
       output: response

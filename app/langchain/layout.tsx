@@ -15,8 +15,11 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
    <>
-        <Navbar />
-        <main className="px-12 md:p-20 max-w-6xl mx-auto">{children}</main>
+        {/* <Navbar /> */}
+        <div className="lg:fixed w-[200px] bg-slate-200 h-full p-6">
+          <h3>Langachin Demos</h3>
+        </div>
+        <main className="px-12 min-h-screen max-w-6xl mx-auto pb-20">{children}</main>
         {/* <Footer /> */}
         </> 
   );

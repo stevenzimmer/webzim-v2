@@ -4,11 +4,11 @@ type Props = {
 };
 
 const TwoColumnLayout = ({ leftChildren, rightChildren }:Props) => (
-  <div className="flex flex-col justify-between  md:flex-row md:justify-between  py-20 -mx-6">
+  <div className="flex flex-wrap justify-between md:justify-end md:py-20 ">
     {/* Description */}
-    <div className="md:w-2/5 w-full px-6 py-12 md:py-20">{leftChildren}</div>
+    <div className="lg:w-1/3 w-full py-12 md:py-20 md:flex xl:block md:justify-center lg:justify-end">{leftChildren}</div>
     {/* Chat */}
-    <div className="md:w-3/5 w-full  px-6">{rightChildren}</div>
+    <div className="lg:w-3/5 w-full  md:px-6">{rightChildren}</div>
   </div>
 );
 

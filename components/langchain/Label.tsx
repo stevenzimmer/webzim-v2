@@ -6,8 +6,8 @@ type Props = {
 const Label = ({ labelEmoji, headingText }:Props) => {
   return (
     <div className="mb-6 flex items-center">
-      <p className="text-center text-2xl">{labelEmoji}</p>
-      <p className="text-center uppercase text-2xl px-3" >{headingText}</p>
+      <p className="text-center md:text-2xl">{labelEmoji}</p>
+      <p className="text-center uppercase md:text-2xl px-3" >{headingText}</p>
     </div>
   );
 };
