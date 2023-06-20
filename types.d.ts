@@ -1,4 +1,4 @@
-import { JSXElementConstructor, ReactElement } from "react"
+import { JSXElementConstructor, ReactElement, MouseEventHandler } from "react"
 
 type Meta = {
   id: string
@@ -34,3 +34,10 @@ type Quote = {
   author: string;
   category: string;
 };
+
+export interface CustomButtonProps {
+  title: string;
+  containerStyles?: string;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
+  btnType?: "button" | "submit";
+}
