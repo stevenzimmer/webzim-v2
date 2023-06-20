@@ -28,3 +28,9 @@ type MessageItem = {
   pngFile: string;
   isLast: boolean;
 };
+
+type Quote = {
+  quote: string;
+  author: string;
+  category: string;
+};
