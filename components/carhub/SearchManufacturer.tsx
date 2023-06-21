@@ -21,7 +21,9 @@ const SearchManufacturer = ({manufacturer, setManufacturer}: SearchManufacturerP
 
   return (
     <div className="search-manufacturer">
-      <Combobox value={manufacturer} onChange={setManufacturer}>
+      <Combobox 
+        value={manufacturer} 
+        onChange={setManufacturer}>
         <div className="relative w-full">
           <Combobox.Button className={`absolute top-[14px] px-3`}>
             <Image src="/images/carhub/car-logo.svg" width={20} height={20} alt="car logo" />
