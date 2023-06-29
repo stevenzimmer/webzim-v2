@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-        <main className="px-4 md:px-6 prose prose-xl  mx-auto ">
+        <main className="px-4 md:px-6  mx-auto ">
           <div className='max-w-xl mx-auto p-12'>
             <ProfilePic />
            
