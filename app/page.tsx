@@ -23,6 +23,9 @@ export default function Home() {
           <Link href="mailto:steven@webzim.dev" className={buttonVariants()}>Contact me</Link>
         </div>
       </div>
+      <div>
+        
+      </div>
       {/* <h1 className="text-center my-6">
           Steven Zimmer
         </h1> */}
